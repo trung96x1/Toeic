@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Toeic.AnswerItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="200">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Name="tbQuesNum" Width="30" FontSize="15" Text="{Binding QuesNumber}" VerticalAlignment="Center" FontWeight="Bold" Margin="5,0,0,0"/>
+            <Grid Margin="7">
+                <TextBlock Name="tbA" FontSize="10" Text="A" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <RadioButton Name="rdA" Checked="rdA_Checked" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+            </Grid>
+            <Grid Margin="7">
+                <TextBlock Name="tbB" FontSize="10" Text="B" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <RadioButton Name="rdB" Checked="rdB_Checked" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+            </Grid>
+            <Grid Margin="7">
+                <TextBlock Name="tbC" FontSize="10" Text="C" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <RadioButton Name="rdC" Checked="rdC_Checked" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+            </Grid>
+            <Grid Margin="7">
+                <TextBlock Name="tbD" FontSize="10" Text="D" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <RadioButton Name="rdD" Checked="rdD_Checked" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="Toeic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Toeic"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="950" Width="700" 
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        WindowStartupLocation="CenterScreen" 
+        AllowsTransparency="True" WindowStyle="None" Background="#FFEAEAEA">
+    <Window.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type local:DialogAddTest}">
+                <StackPanel Margin="20" Grid.Column="1" MinWidth="300">
+                    <TextBox materialDesign:HintAssist.Hint="Test name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5"/>
+                    <TextBox materialDesign:HintAssist.Hint="Test result" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5"/>
+                    <Grid>
+                        <Button Name="btnOk" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="btnOk_Click" HorizontalAlignment="Right" Margin="0,5,50,5">OK</Button>
+                        <Button Name="btnCancel" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Left" Margin="50,5,0,5">Cancel</Button>
+                    </Grid>
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Button Name="btnClose" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Click="btnClose_Click" Background="red">
+            <materialDesign:PackIcon Kind="Close"/>
+        </Button>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+                
+            </Border>
+            <ListView Grid.Row="1" x:Name="lvTest">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Name="tbTestName" Text="{Binding testName}" FontSize="20" FontWeight="Bold" Margin="10"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="MouseDoubleClick" Handler="listViewItem_MouseDoubleClick" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid>
+        <materialDesign:DialogHost CloseOnClickAway="False" Identifier="AddTestDialog">
+            <Button Name="btnAdd" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource MaterialDesignFloatingActionButton}" Click="btnAdd_Click" Background="Green" Margin="5">
+                <materialDesign:PackIcon Kind="Plus"/>
+            </Button>
+        </materialDesign:DialogHost>
+    </Grid>
+</Window>

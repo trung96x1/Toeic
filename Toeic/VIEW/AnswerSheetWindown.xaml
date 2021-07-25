@@ -1,0 +1,436 @@
+﻿<Window x:Class="Toeic.AnswerSheetWindown"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Toeic"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="950" Width="700" 
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        WindowStartupLocation="CenterScreen" 
+        AllowsTransparency="True" WindowStyle="None" Background="#FFEAEAEA">
+    <Window.Resources>
+        <Storyboard x:Key="OpenSheet2">
+            <DoubleAnimation Storyboard.TargetName="Transform1" 
+                                     Storyboard.TargetProperty="X" From="0" To="-700"
+                                     Duration="0:0:0.3" BeginTime="0:0:0"/>
+            <DoubleAnimation Storyboard.TargetName="Transform2" 
+                                     Storyboard.TargetProperty="X" From="700" To="0"
+                                     Duration="0:0:0.3" BeginTime="0:0:0"/>
+        </Storyboard>
+        <Storyboard x:Key="OpenSheet1">
+            <DoubleAnimation Storyboard.TargetName="Transform1" 
+                                     Storyboard.TargetProperty="X" From="-700" To="0"
+                                     Duration="0:0:0.3" BeginTime="0:0:0"/>
+            <DoubleAnimation Storyboard.TargetName="Transform2" 
+                                     Storyboard.TargetProperty="X" From="0" To="700"
+                                     Duration="0:0:0.3" BeginTime="0:0:0"/>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnNext">
+            <BeginStoryboard Storyboard="{StaticResource OpenSheet2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnPre">
+            <BeginStoryboard Storyboard="{StaticResource OpenSheet1}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <!--Answer Sheet 1-->
+        <Grid x:Name="gridSheet1">
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="Transform1" X="0" Y="0"/>
+            </Grid.RenderTransform>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Grid Grid.Row="0">
+                    <Button Name="btnClose" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Click="btnClose_Click" Background="red">
+                        <materialDesign:PackIcon Kind="Close"/>
+                    </Button>
+                    <Button Name="btnStart1" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Green" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="50" Height="50" Click="btnStart_Click">
+                        <materialDesign:PackIcon Name="paStart1" Kind="Play" Width="30" Height="30"/>
+                    </Button>
+                    <TextBlock x:Name="tbTitle" Text="ETS 2020 - Test 1" FontWeight="Thin" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Listening Section" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="tbRemainTime" Text="00:00:00" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,5" Foreground="Green"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw1" QuesNumber="1"/>
+                        <local:AnswerItem x:Name="asw2" QuesNumber="2"/>
+                        <local:AnswerItem x:Name="asw3" QuesNumber="3"/>
+                        <local:AnswerItem x:Name="asw4" QuesNumber="4"/>
+                        <local:AnswerItem x:Name="asw5" QuesNumber="5"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw6" QuesNumber="6"/>
+                        <local:AnswerItem x:Name="asw7" QuesNumber="7"/>
+                        <local:AnswerItem x:Name="asw8" QuesNumber="8"/>
+                        <local:AnswerItem x:Name="asw9" QuesNumber="9"/>
+                        <local:AnswerItem x:Name="asw10" QuesNumber="10"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw11" QuesNumber="11"/>
+                        <local:AnswerItem x:Name="asw12" QuesNumber="12"/>
+                        <local:AnswerItem x:Name="asw13" QuesNumber="13"/>
+                        <local:AnswerItem x:Name="asw14" QuesNumber="14"/>
+                        <local:AnswerItem x:Name="asw15" QuesNumber="15"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw16" QuesNumber="16"/>
+                        <local:AnswerItem x:Name="asw17" QuesNumber="17"/>
+                        <local:AnswerItem x:Name="asw18" QuesNumber="18"/>
+                        <local:AnswerItem x:Name="asw19" QuesNumber="19"/>
+                        <local:AnswerItem x:Name="asw20" QuesNumber="20"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw21" QuesNumber="21"/>
+                        <local:AnswerItem x:Name="asw22" QuesNumber="22"/>
+                        <local:AnswerItem x:Name="asw23" QuesNumber="23"/>
+                        <local:AnswerItem x:Name="asw24" QuesNumber="24"/>
+                        <local:AnswerItem x:Name="asw25" QuesNumber="25"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw26" QuesNumber="26"/>
+                        <local:AnswerItem x:Name="asw27" QuesNumber="27"/>
+                        <local:AnswerItem x:Name="asw28" QuesNumber="28"/>
+                        <local:AnswerItem x:Name="asw29" QuesNumber="29"/>
+                        <local:AnswerItem x:Name="asw30" QuesNumber="30"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw31" QuesNumber="31"/>
+                        <local:AnswerItem x:Name="asw32" QuesNumber="32"/>
+                        <local:AnswerItem x:Name="asw33" QuesNumber="33"/>
+                        <local:AnswerItem x:Name="asw34" QuesNumber="34"/>
+                        <local:AnswerItem x:Name="asw35" QuesNumber="35"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw36" QuesNumber="36"/>
+                        <local:AnswerItem x:Name="asw37" QuesNumber="37"/>
+                        <local:AnswerItem x:Name="asw38" QuesNumber="38"/>
+                        <local:AnswerItem x:Name="asw39" QuesNumber="39"/>
+                        <local:AnswerItem x:Name="asw40" QuesNumber="40"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw41" QuesNumber="41"/>
+                        <local:AnswerItem x:Name="asw42" QuesNumber="42"/>
+                        <local:AnswerItem x:Name="asw43" QuesNumber="43"/>
+                        <local:AnswerItem x:Name="asw44" QuesNumber="44"/>
+                        <local:AnswerItem x:Name="asw45" QuesNumber="45"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw46" QuesNumber="46"/>
+                        <local:AnswerItem x:Name="asw47" QuesNumber="47"/>
+                        <local:AnswerItem x:Name="asw48" QuesNumber="48"/>
+                        <local:AnswerItem x:Name="asw49" QuesNumber="49"/>
+                        <local:AnswerItem x:Name="asw50" QuesNumber="50"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw51" QuesNumber="51"/>
+                        <local:AnswerItem x:Name="asw52" QuesNumber="52"/>
+                        <local:AnswerItem x:Name="asw53" QuesNumber="53"/>
+                        <local:AnswerItem x:Name="asw54" QuesNumber="54"/>
+                        <local:AnswerItem x:Name="asw55" QuesNumber="55"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw56" QuesNumber="56"/>
+                        <local:AnswerItem x:Name="asw57" QuesNumber="57"/>
+                        <local:AnswerItem x:Name="asw58" QuesNumber="58"/>
+                        <local:AnswerItem x:Name="asw59" QuesNumber="59"/>
+                        <local:AnswerItem x:Name="asw60" QuesNumber="60"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw61" QuesNumber="61"/>
+                        <local:AnswerItem x:Name="asw62" QuesNumber="62"/>
+                        <local:AnswerItem x:Name="asw63" QuesNumber="63"/>
+                        <local:AnswerItem x:Name="asw64" QuesNumber="64"/>
+                        <local:AnswerItem x:Name="asw65" QuesNumber="65"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw66" QuesNumber="66"/>
+                        <local:AnswerItem x:Name="asw67" QuesNumber="67"/>
+                        <local:AnswerItem x:Name="asw68" QuesNumber="68"/>
+                        <local:AnswerItem x:Name="asw69" QuesNumber="69"/>
+                        <local:AnswerItem x:Name="asw70" QuesNumber="70"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw71" QuesNumber="71"/>
+                        <local:AnswerItem x:Name="asw72" QuesNumber="72"/>
+                        <local:AnswerItem x:Name="asw73" QuesNumber="73"/>
+                        <local:AnswerItem x:Name="asw74" QuesNumber="74"/>
+                        <local:AnswerItem x:Name="asw75" QuesNumber="75"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="3">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw76" QuesNumber="76"/>
+                        <local:AnswerItem x:Name="asw77" QuesNumber="77"/>
+                        <local:AnswerItem x:Name="asw78" QuesNumber="78"/>
+                        <local:AnswerItem x:Name="asw79" QuesNumber="79"/>
+                        <local:AnswerItem x:Name="asw80" QuesNumber="80"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw81" QuesNumber="81"/>
+                        <local:AnswerItem x:Name="asw82" QuesNumber="82"/>
+                        <local:AnswerItem x:Name="asw83" QuesNumber="83"/>
+                        <local:AnswerItem x:Name="asw84" QuesNumber="84"/>
+                        <local:AnswerItem x:Name="asw85" QuesNumber="85"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw86" QuesNumber="86"/>
+                        <local:AnswerItem x:Name="asw87" QuesNumber="87"/>
+                        <local:AnswerItem x:Name="asw88" QuesNumber="88"/>
+                        <local:AnswerItem x:Name="asw89" QuesNumber="89"/>
+                        <local:AnswerItem x:Name="asw90" QuesNumber="90"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw91" QuesNumber="91"/>
+                        <local:AnswerItem x:Name="asw92" QuesNumber="92"/>
+                        <local:AnswerItem x:Name="asw93" QuesNumber="93"/>
+                        <local:AnswerItem x:Name="asw94" QuesNumber="94"/>
+                        <local:AnswerItem x:Name="asw95" QuesNumber="95"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw96" QuesNumber="96"/>
+                        <local:AnswerItem x:Name="asw97" QuesNumber="97"/>
+                        <local:AnswerItem x:Name="asw98" QuesNumber="98"/>
+                        <local:AnswerItem x:Name="asw99" QuesNumber="99"/>
+                        <local:AnswerItem x:Name="asw100" QuesNumber="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Button x:Name="btnNext" Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,10,0" Background="Green">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Next" Margin="0,0,5,0"/>
+                    <materialDesign:PackIcon Kind="ArrowRightBold" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        
+        <!--Answer Sheet 2-->
+        <Grid x:Name="gridSheet2">
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="Transform2" X="700" Y="0"/>
+            </Grid.RenderTransform>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Grid Grid.Row="0">
+                    <Button Name="btnClose2" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Click="btnClose_Click" Background="red">
+                        <materialDesign:PackIcon Kind="Close"/>
+                    </Button>
+                    <Button Name="btnStart2" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Green" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="50" Height="50" Click="btnStart_Click">
+                        <materialDesign:PackIcon Name="paStart2" Kind="Play" Width="30" Height="30"/>
+                    </Button>
+                    <TextBlock x:Name="tbScore" Text="990" FontSize="40" FontWeight="Bold" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Visibility="Collapsed"/>
+                    <TextBlock x:Name="tbTitle2" Text="ETS 2020 - Test 1" FontWeight="Thin" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Reading Section" FontSize="25" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="tbRemainTime2" Text="00:00:00" FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,5" Foreground="Green"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw101" QuesNumber="101"/>
+                        <local:AnswerItem x:Name="asw102" QuesNumber="102"/>
+                        <local:AnswerItem x:Name="asw103" QuesNumber="103"/>
+                        <local:AnswerItem x:Name="asw104" QuesNumber="104"/>
+                        <local:AnswerItem x:Name="asw105" QuesNumber="105"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw106" QuesNumber="106"/>
+                        <local:AnswerItem x:Name="asw107" QuesNumber="107"/>
+                        <local:AnswerItem x:Name="asw108" QuesNumber="108"/>
+                        <local:AnswerItem x:Name="asw109" QuesNumber="109"/>
+                        <local:AnswerItem x:Name="asw110" QuesNumber="110"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw111" QuesNumber="111"/>
+                        <local:AnswerItem x:Name="asw112" QuesNumber="112"/>
+                        <local:AnswerItem x:Name="asw113" QuesNumber="113"/>
+                        <local:AnswerItem x:Name="asw114" QuesNumber="114"/>
+                        <local:AnswerItem x:Name="asw115" QuesNumber="115"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw116" QuesNumber="116"/>
+                        <local:AnswerItem x:Name="asw117" QuesNumber="117"/>
+                        <local:AnswerItem x:Name="asw118" QuesNumber="118"/>
+                        <local:AnswerItem x:Name="asw119" QuesNumber="119"/>
+                        <local:AnswerItem x:Name="asw120" QuesNumber="120"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw121" QuesNumber="121"/>
+                        <local:AnswerItem x:Name="asw122" QuesNumber="122"/>
+                        <local:AnswerItem x:Name="asw123" QuesNumber="123"/>
+                        <local:AnswerItem x:Name="asw124" QuesNumber="124"/>
+                        <local:AnswerItem x:Name="asw125" QuesNumber="125"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw126" QuesNumber="126"/>
+                        <local:AnswerItem x:Name="asw127" QuesNumber="127"/>
+                        <local:AnswerItem x:Name="asw128" QuesNumber="128"/>
+                        <local:AnswerItem x:Name="asw129" QuesNumber="129"/>
+                        <local:AnswerItem x:Name="asw130" QuesNumber="130"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw131" QuesNumber="131"/>
+                        <local:AnswerItem x:Name="asw132" QuesNumber="132"/>
+                        <local:AnswerItem x:Name="asw133" QuesNumber="133"/>
+                        <local:AnswerItem x:Name="asw134" QuesNumber="134"/>
+                        <local:AnswerItem x:Name="asw135" QuesNumber="135"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw136" QuesNumber="136"/>
+                        <local:AnswerItem x:Name="asw137" QuesNumber="137"/>
+                        <local:AnswerItem x:Name="asw138" QuesNumber="138"/>
+                        <local:AnswerItem x:Name="asw139" QuesNumber="139"/>
+                        <local:AnswerItem x:Name="asw140" QuesNumber="140"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw141" QuesNumber="141"/>
+                        <local:AnswerItem x:Name="asw142" QuesNumber="142"/>
+                        <local:AnswerItem x:Name="asw143" QuesNumber="143"/>
+                        <local:AnswerItem x:Name="asw144" QuesNumber="144"/>
+                        <local:AnswerItem x:Name="asw145" QuesNumber="145"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw146" QuesNumber="146"/>
+                        <local:AnswerItem x:Name="asw147" QuesNumber="147"/>
+                        <local:AnswerItem x:Name="asw148" QuesNumber="148"/>
+                        <local:AnswerItem x:Name="asw149" QuesNumber="149"/>
+                        <local:AnswerItem x:Name="asw150" QuesNumber="150"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw151" QuesNumber="151"/>
+                        <local:AnswerItem x:Name="asw152" QuesNumber="152"/>
+                        <local:AnswerItem x:Name="asw153" QuesNumber="153"/>
+                        <local:AnswerItem x:Name="asw154" QuesNumber="154"/>
+                        <local:AnswerItem x:Name="asw155" QuesNumber="155"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw156" QuesNumber="156"/>
+                        <local:AnswerItem x:Name="asw157" QuesNumber="157"/>
+                        <local:AnswerItem x:Name="asw158" QuesNumber="158"/>
+                        <local:AnswerItem x:Name="asw159" QuesNumber="159"/>
+                        <local:AnswerItem x:Name="asw160" QuesNumber="160"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw161" QuesNumber="161"/>
+                        <local:AnswerItem x:Name="asw162" QuesNumber="162"/>
+                        <local:AnswerItem x:Name="asw163" QuesNumber="163"/>
+                        <local:AnswerItem x:Name="asw164" QuesNumber="164"/>
+                        <local:AnswerItem x:Name="asw165" QuesNumber="165"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw166" QuesNumber="166"/>
+                        <local:AnswerItem x:Name="asw167" QuesNumber="167"/>
+                        <local:AnswerItem x:Name="asw168" QuesNumber="168"/>
+                        <local:AnswerItem x:Name="asw169" QuesNumber="169"/>
+                        <local:AnswerItem x:Name="asw170" QuesNumber="170"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw171" QuesNumber="171"/>
+                        <local:AnswerItem x:Name="asw172" QuesNumber="172"/>
+                        <local:AnswerItem x:Name="asw173" QuesNumber="173"/>
+                        <local:AnswerItem x:Name="asw174" QuesNumber="174"/>
+                        <local:AnswerItem x:Name="asw175" QuesNumber="175"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="3">
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw176" QuesNumber="176"/>
+                        <local:AnswerItem x:Name="asw177" QuesNumber="177"/>
+                        <local:AnswerItem x:Name="asw178" QuesNumber="178"/>
+                        <local:AnswerItem x:Name="asw179" QuesNumber="179"/>
+                        <local:AnswerItem x:Name="asw180" QuesNumber="180"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw181" QuesNumber="181"/>
+                        <local:AnswerItem x:Name="asw182" QuesNumber="182"/>
+                        <local:AnswerItem x:Name="asw183" QuesNumber="183"/>
+                        <local:AnswerItem x:Name="asw184" QuesNumber="184"/>
+                        <local:AnswerItem x:Name="asw185" QuesNumber="185"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw186" QuesNumber="186"/>
+                        <local:AnswerItem x:Name="asw187" QuesNumber="187"/>
+                        <local:AnswerItem x:Name="asw188" QuesNumber="188"/>
+                        <local:AnswerItem x:Name="asw189" QuesNumber="189"/>
+                        <local:AnswerItem x:Name="asw190" QuesNumber="190"/>
+                    </StackPanel>
+                    <StackPanel Background="White">
+                        <local:AnswerItem x:Name="asw191" QuesNumber="191"/>
+                        <local:AnswerItem x:Name="asw192" QuesNumber="192"/>
+                        <local:AnswerItem x:Name="asw193" QuesNumber="193"/>
+                        <local:AnswerItem x:Name="asw194" QuesNumber="194"/>
+                        <local:AnswerItem x:Name="asw195" QuesNumber="195"/>
+                    </StackPanel>
+                    <StackPanel Background="#FFEAEAEA">
+                        <local:AnswerItem x:Name="asw196" QuesNumber="196"/>
+                        <local:AnswerItem x:Name="asw197" QuesNumber="197"/>
+                        <local:AnswerItem x:Name="asw198" QuesNumber="198"/>
+                        <local:AnswerItem x:Name="asw199" QuesNumber="199"/>
+                        <local:AnswerItem x:Name="asw200" QuesNumber="200"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Button x:Name="btnPre" Grid.Row="2" HorizontalAlignment="Left" Margin="10,0,0,0" Background="Green">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ArrowLeftBold" VerticalAlignment="Center"/>
+                    <TextBlock Text="Pre" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <StackPanel Grid.Row="2" x:Name="gridResult" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Visibility="Collapsed">
+                <StackPanel Orientation="Vertical" Width="70">
+                    <TextBlock x:Name="tbPart1Result" Text="Part 1 : "/>
+                    <TextBlock x:Name="tbPart2Result" Text="Part 2 : "/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="70">
+                    <TextBlock x:Name="tbPart3Result" Text="Part 3 : "/>
+                    <TextBlock x:Name="tbPart4Result" Text="Part 4 : "/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="70">
+                    <TextBlock x:Name="tbPart5Result" Text="Part 5 : "/>
+                    <TextBlock x:Name="tbPart6Result" Text="Part 6 : "/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="70">
+                    <TextBlock x:Name="tbPart7Result" Text="Part 7 : "/>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="btnSubmit" Grid.Row="2" Click="btnSubmit_Click" HorizontalAlignment="Right" Margin="0,0,10,0" Background="Green">
+                <StackPanel Orientation="Horizontal"> 
+                    <TextBlock Text="Submit" Margin="0,0,5,0"/>
+                    <materialDesign:PackIcon Kind="Check" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
